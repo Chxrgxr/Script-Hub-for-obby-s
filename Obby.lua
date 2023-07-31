@@ -7,6 +7,22 @@ local Main = Window:NewTab("Player")
 
 local MainSection = Main:NewSection("Works in almost any game")
 
+local plr = game:GetService("Players").LocalPlayer
+
+local function modifyChatMessage(message)
+    local props = Instance.new("TextChatMessageProperties")
+    if message.TextSource.UserId == plr.UserId then
+        local tag = "USER" 
+        local r, g, b = 0, 0, 0 -- replace what color you want lol
+        props.PrefixText = "<font color='#" .. Color3.fromRGB(r, g, b):ToHex() .. "'>[" .. tag .. "]</font> " .. message.PrefixText
+    end
+    return props
+end
+
+pcall(function()
+    game:GetService("TextChatService").OnIncomingMessage = modifyChatMessage
+end)
+
 --BUTTONS
 
 MainSection:NewButton("Inf Jumps", "Inf jumps for almost any obby", function()
