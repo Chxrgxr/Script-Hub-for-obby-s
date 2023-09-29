@@ -1,4 +1,4 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yopapa699/KavoUI/main/KavoUiLib"))()
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F", true))()
 local Window = Library.CreateLib("Obby", "DarkTheme")
 
 --MAIN
@@ -8,20 +8,6 @@ local Main = Window:NewTab("Player")
 local MainSection = Main:NewSection("Works in almost any game")
 
 local plr = game:GetService("Players").LocalPlayer
-
-local function modifyChatMessage(message)
-    local props = Instance.new("TextChatMessageProperties")
-    if message.TextSource.UserId == plr.UserId then
-        local tag = "USER" 
-        local r, g, b = 0, 0, 0 -- replace what color you want lol
-        props.PrefixText = "<font color='#" .. Color3.fromRGB(r, g, b):ToHex() .. "'>[" .. tag .. "]</font> " .. message.PrefixText
-    end
-    return props
-end
-
-pcall(function()
-    game:GetService("TextChatService").OnIncomingMessage = modifyChatMessage
-end)
 
 --BUTTONS
 
